@@ -1,6 +1,7 @@
-package test;
+package thread;
 
 import java.util.HashMap;
+
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicLong;
@@ -29,7 +30,7 @@ class MyThread<V extends CountDownLatch> implements Runnable {
 	}
 }
 
-public class T1 {
+public class CountDownLatchTest {
 	public long timeTasks(int iThreadCount) {
 
 		final CountDownLatch startCount = new CountDownLatch(1); //闭锁
@@ -59,7 +60,7 @@ public class T1 {
 
 	public static void main(String args[]) {
 		long beginTime = System.currentTimeMillis();
-		T1 t = new T1();
+		CountDownLatchTest t = new CountDownLatchTest();
 		long n = t.timeTasks(10);
 		//nanoseconds
 		System.out.println( "countDown Time " +  n/1000000/1000  );
