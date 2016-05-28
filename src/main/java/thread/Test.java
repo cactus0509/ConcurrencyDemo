@@ -19,9 +19,10 @@ class Task implements Callable<String>{
 }
 public class Test {
 	public static void main(String[] args) {
-        ExecutorService executor = Executors.newCachedThreadPool();
+    /*    ExecutorService executor = Executors.newCachedThreadPool();
         Task task = new Task();
         Future<String> result = executor.submit(task);
+        
         executor.shutdown();
           
         System.out.println("主线程在执行任务");
@@ -32,8 +33,19 @@ public class Test {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
+        }*/
+        Thread b = new Thread() {
+        	public void run() {
+        		System.out.println("hello");
+        	}
+        };
+        b.start(); 
+        
+        try {
+          b.join(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-         
         System.out.println("所有任务执行完毕");
     } 
 }
